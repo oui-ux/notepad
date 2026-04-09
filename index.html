@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Info & Concern Log</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topBar">
+      <div>
+        <h1>User Info & Issue / Concern Log</h1>
+        <div class="topActions">
+          <button id="btnAddEntry">+ Add Entry</button>
+          <button id="btnCollapseAll" class="secondary">Collapse All</button>
+          <button id="btnExpandAll" class="secondary">Expand All</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <div id="entries" class="entries"></div>
+    </main>
+
+    <template id="entryTemplate">
+      <article class="entry">
+        <div class="entryHeader">
+          <span class="badge">Entry <span class="entryNumber"></span></span>
+          <div>
+            <button class="secondary" data-action="toggle">Collapse</button>
+            <button class="danger" data-action="remove">Remove</button>
+          </div>
+        </div>
+
+        <div class="entryBody">
+          <!-- LEFT -->
+          <section class="card">
+            <h2>User Information</h2>
+            <label>Alias</label>
+            <input class="alias" />
+            <label>Name</label>
+            <input class="name" />
+            <label>Phone</label>
+            <input class="phone" />
+            <label>Time Zone</label>
+            <input class="timezone" />
+            <label>Business Hours</label>
+            <input class="businessHours" />
+
+            <div class="btnRow">
+              <button data-action="display">Display User Info</button>
+              <button class="secondary" data-action="copy">Copy</button>
+            </div>
+            <pre class="output userOutput"></pre>
+          </section>
+
+          <section class="card">
+            <h2>Issue / Concern</h2>
+
+            <label>Concern Type</label>
+            <select class="concernType">
+              <option value="">-- Select --</option>
+              <option value="ios_passkey">iOS Passkey</option>
+              <option value="android_passkey">Android Passkey </option>
+              <option value="windows_passkey">Windows Passkey </option>
+              <option value="iOS_new"> iOS new </option>
+              <option value="android_new"> Android new </option>
+              <option value="windows_deviceCompliance_update"> Windows device compliance(updates)</option>
+              <option value="bitlock"> Bitlock</option>
+              <option value="windows_deviceCompliance_sync"> Windows device compliance(sync)</option>
+              <option value="identity_pass"> Identity pass</option>
+              <option value="RAS_access"> RAS access</option>
+              <option value="SAW"> SAW</option>
+              <option value="windows_Activation"> Windows Activation</option>
+              <option value="AzureVPN_taskbar"> Azure VPN taskbar</option>
+              <option value="Deleted_device"> Windows Deleted Device</option>
+              <option value="valid_phones"> Valid phones</option>
+
+            </select>
+
+            <label>Describe the Issue (free text)</label>
+            <textarea class="issueText"></textarea>
+
+            <div class="btnRow">
+              <button data-action="steps">Show Steps</button>
+              <button class="secondary" data-action="copy-steps">Copy (Free text / Full output)</button>
+            </div>
+
+            <div class="splitOutputs">
+              <div class="splitBlock">
+                <div class="btnRow">
+                  <label class="miniLabel">Short Description</label>
+                  <button class="secondary" data-action="copy-usercalling">Copy</button>
+                </div>
+                <textarea class="outputBox userCallingOutput" readonly></textarea>
+              </div>
+
+              <div class="splitBlock">
+                <div class="btnRow">
+                  <label class="miniLabel">Root cause</label>
+                  <button class="secondary" data-action="copy-rootcause">Copy</button>
+                </div>
+                <textarea class="outputBox rootCauseOutput" readonly></textarea>
+              </div>
+
+              <div class="splitBlock">
+                <div class="btnRow">
+                  <label class="miniLabel">Troubleshooting steps</label>
+                  <button class="secondary" data-action="copy-troubleshooting">Copy</button>
+                </div>
+                <textarea class="outputBox troubleshootingOutput" readonly></textarea>
+              </div>
+
+              <div class="splitBlock">
+                <div class="btnRow">
+                  <label class="miniLabel">KB</label>
+                  <button class="secondary" data-action="copy-kb">Copy</button>
+                </div>
+                <textarea class="outputBox kbOutput" readonly></textarea>
+              </div>
+            </div>
+
+            
+            <pre class="output concernOutput" style="display:none;"></pre>
+          </section>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
