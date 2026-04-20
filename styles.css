@@ -348,3 +348,25 @@ body.dark-mode [data-action="toggle-free-text"] {
 body.dark-mode [data-action="toggle-free-text"]:hover {
   background: #005fa3 !important;
 }
+body.dark-mode .escalationType {
+  background: #23272a;
+  color: #e3e6eb;
+  border-color: #2c3440;
+}
+body.dark-mode .tabButtons button {
+  background: #2c3440 !important;
+  color: #e3e6eb !important;
+  border-color: #2c3440 !important;
+}
+body.dark-mode .tabButtons button:hover {
+  background: #364152 !important;
+}
+body.dark-mode .tabButtons button[style*="bold"] {
+  background: #0078d4 !important;
+  color: #fff !important;
+}
+body.dark-mode .tabSelect {
+  background: #23272a;
+  color: #e3e6eb;
+  border-color: #2c3440;
+}

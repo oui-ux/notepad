@@ -642,7 +642,7 @@ entriesEl.addEventListener('click', async (e) => {
     if (freeText.style.display === 'none') {
       // Pre-fill template if empty
       if (!textarea.value.trim()) {
-        textarea.value = 'Troubleshooting Steps:\n\n\n \nRemote Session Permission: Yes\nSensitive/Confidential Statement Provided: Yes\nRemote Session Completed: Yes\nIssue Resolved: Yes\nUser Confirmed Resolution: Yes\nPermission to Close Ticket: Yes';
+        textarea.value ='Troubleshooting Steps:\n\n\n\n \nRemote Session Permission: Yes\nSensitive/Confidential Statement Provided: Yes\nRemote Session Completed: Yes\nIssue Resolved: Yes\nUser Confirmed Resolution: Yes\nPermission to Close Ticket: Yes';
       }
       freeText.style.display = 'block';
       concernDetails.style.display = 'none';
@@ -651,6 +651,39 @@ entriesEl.addEventListener('click', async (e) => {
       freeText.style.display = 'none';
       concernDetails.style.display = 'block';
       btn.textContent = 'Show Free Text';
+    }
+  }
+
+  // Copy Troubleshooting Steps
+  if (action === 'copy-troubleshooting') {
+    const textarea = entry.querySelector('.issueText');
+    await copy(textarea.value, btn);
+  }
+
+  // Copy Escalation
+  if (action === 'copy-escalation') {
+    const textarea = entry.querySelector('.escalationText');
+    await copy(textarea.value, btn);
+  }
+});
+
+// Handle tab selection dropdown change
+entriesEl.addEventListener('change', async (e) => {
+  if (e.target.classList.contains('tabSelect')) {
+    const entry = e.target.closest('.entry');
+    const troubleshootingContent = entry.querySelector('.troubleshootingContent');
+    const escalationContent = entry.querySelector('.escalationContent');
+    const escalationTextarea = entry.querySelector('.escalationText');
+    if (e.target.value === 'troubleshooting') {
+      troubleshootingContent.style.display = 'block';
+      escalationContent.style.display = 'none';
+    } else {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'block';
+      // Pre-fill escalation template if empty
+      if (!escalationTextarea.value.trim()) {
+        escalationTextarea.value = 'Issue (I) - \nError Message (E) - \nCause (C) - \nTroubleshooting Steps:\n\n\nBug Number (BN) -\nSystem Info (SI) -';
+      }
     }
   }
 });

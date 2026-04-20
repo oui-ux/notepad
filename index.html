@@ -78,11 +78,20 @@
 
             <div class="freeTextDetails" style="display:none;">
               <div class="btnRow">
-                <label>Describe the Issue (free text)</label>
-                <button class="secondary" data-action="copy-freetext">Copy</button>
+                <label>Select:</label>
+                <select class="tabSelect" style="width:auto;margin-left:10px;">
+                  <option value="troubleshooting">Troubleshooting Steps</option>
+                  <option value="escalation">Escalation</option>
+                </select>
               </div>
-              <textarea class="issueText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Troubleshooting Steps:
 
+              <div class="troubleshootingContent">
+                <div class="btnRow">
+                  <button class="secondary" data-action="copy-troubleshooting">Copy</button>
+                </div>
+                <textarea class="issueText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Troubleshooting Steps:">
+
+Troubleshooting Steps:
 
 
 Remote Session Permission: Yes
@@ -90,7 +99,15 @@ Sensitive/Confidential Statement Provided: Yes
 Remote Session Completed: Yes
 Issue Resolved: Yes
 User Confirmed Resolution: Yes
-Permission to Close Ticket: Yes"></textarea>
+Permission to Close Ticket: Yes</textarea>
+            </div>
+
+            <div class="escalationContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-escalation">Copy</button>
+              </div>
+              <textarea class="escalationText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Issue (I) - &#10;Error Message (E) - &#10;Cause (C) - &#10;Troubleshooting Steps:&#10;&#10;&#10;Bug Number (BN) - &#10;System Info (SI) -"></textarea>
+            </div>
             </div>
 
             <div class="concernDetails">
@@ -117,7 +134,6 @@ Permission to Close Ticket: Yes"></textarea>
 
               <div class="btnRow">
                 <button data-action="steps">Show Steps</button>
-                
               </div>
 
               <div class="splitOutputs">
