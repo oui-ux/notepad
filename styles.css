@@ -339,3 +339,12 @@ body.dark-mode .entryHeader {
   background: #232a33 !important;
   border-bottom-color: #2c3440 !important;
 }
+body.dark-mode [data-action="toggle-free-text"] {
+  background: #0078d4 !important;
+  color: #fff !important;
+  border-color: #0078d4 !important;
+  font-weight: bold;
+}
+body.dark-mode [data-action="toggle-free-text"]:hover {
+  background: #005fa3 !important;
+}
