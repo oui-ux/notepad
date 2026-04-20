@@ -627,7 +627,7 @@ entriesEl.addEventListener('click', async (e) => {
     if (freeText.style.display === 'none') {
       // Pre-fill template if empty
       if (!textarea.value.trim()) {
-        textarea.value = 'Troubleshooting Steps:\n\n\nRemote Session Permission: Yes\nSensitive/Confidential Statement Provided: Yes\nRemote Session Completed: Yes\nIssue Resolved: Yes\nUser Confirmed Resolution: Yes\nPermission to Close Ticket: Yes';
+        textarea.value = 'Troubleshooting Steps:\n\n\n \nRemote Session Permission: Yes\nSensitive/Confidential Statement Provided: Yes\nRemote Session Completed: Yes\nIssue Resolved: Yes\nUser Confirmed Resolution: Yes\nPermission to Close Ticket: Yes';
       }
       freeText.style.display = 'block';
       concernDetails.style.display = 'none';
