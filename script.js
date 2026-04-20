@@ -496,12 +496,23 @@ function getConcernPartsByType(type) {
 }
 
 function buildUserInfo(entry) {
+  let rootCause = entry.querySelector('.rootCauseInfo').value.trim();
+  // If input is exactly 'root cause' (with or without colon/space), display only 'Root cause:'
+  if (/^root cause[:：]?\s*$/i.test(rootCause)) {
+    rootCause = 'Root cause:';
+  } else if (/^root cause[:：]?/i.test(rootCause)) {
+    // If input starts with 'Root cause:' and has more text, display as is (normalize label)
+    rootCause = rootCause.replace(/^root cause[:：]?\s*/i, 'Root cause: ');
+  } else if (rootCause.length > 0) {
+    // Otherwise, prepend label
+    rootCause = 'Root cause: ' + rootCause;
+  }
   return [
-    `Name: ${entry.querySelector('.name').value}`,
-    `Alias: ${entry.querySelector('.alias').value}`,
-    `Phone: ${entry.querySelector('.phone').value}`,
+    rootCause,
     `Time Zone: ${entry.querySelector('.timezone').value}`,
-    `Business Hours: ${entry.querySelector('.businessHours').value}`
+    `Business Hours: ${entry.querySelector('.businessHours').value}`,
+    `Best Contact Number: ${entry.querySelector('.bestContactNumber').value}`,
+    `Alternate Contact Number: ${entry.querySelector('.alternateContactNumber').value}`
   ].join('\n');
 }
 
@@ -600,9 +611,33 @@ entriesEl.addEventListener('click', async (e) => {
   if (action === 'copy-kb') {
     await copy(entry.querySelector('.kbOutput').value, btn);
   }
+  if (action === 'copy-freetext') {
+    await copy(entry.querySelector('.issueText').value, btn);
+  }
 
   if (action === 'remove') entry.remove();
   if (action === 'toggle') entry.classList.toggle('collapsed');
+
+  // Toggle free text visibility
+  if (action === 'toggle-free-text') {
+    const freeText = entry.querySelector('.freeTextDetails');
+    const concernDetails = entry.querySelector('.concernDetails');
+    const btn = entry.querySelector('[data-action="toggle-free-text"]');
+    const textarea = entry.querySelector('.issueText');
+    if (freeText.style.display === 'none') {
+      // Pre-fill template if empty
+      if (!textarea.value.trim()) {
+        textarea.value = 'Troubleshooting Steps:\n\n\nRemote Session Permission: Yes\nSensitive/Confidential Statement Provided: Yes\nRemote Session Completed: Yes\nIssue Resolved: Yes\nUser Confirmed Resolution: Yes\nPermission to Close Ticket: Yes';
+      }
+      freeText.style.display = 'block';
+      concernDetails.style.display = 'none';
+      btn.textContent = 'Hide Free Text';
+    } else {
+      freeText.style.display = 'none';
+      concernDetails.style.display = 'block';
+      btn.textContent = 'Show Free Text';
+    }
+  }
 });
 
 document.getElementById('btnAddEntry').onclick = addEntry;

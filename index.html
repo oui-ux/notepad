@@ -24,8 +24,15 @@
 
     <template id="entryTemplate">
       <article class="entry">
+
         <div class="entryHeader">
-          <span class="badge">Entry <span class="entryNumber"></span></span>
+          <span class="badge">
+            Entry <span class="entryNumber"></span>
+            <input class="headerText1" type="text" placeholder="Phone #" style="margin-left:10px;width:120px;" />
+            <input class="headerText2" type="text" placeholder="IMS" style="margin-left:5px;width:120px;" />
+            <input class="headerText2" type="text" placeholder="INC" style="margin-left:5px;width:120px;" />
+          </span>
+          </span>
           <div>
             <button class="secondary" data-action="toggle">Collapse</button>
             <button class="danger" data-action="remove">Remove</button>
@@ -36,16 +43,17 @@
           <!-- LEFT -->
           <section class="card">
             <h2>User Information</h2>
-            <label>Alias</label>
-            <input class="alias" />
-            <label>Name</label>
-            <input class="name" />
-            <label>Phone</label>
-            <input class="phone" />
+
+            <label>Root Cause</label>
+            <input class="rootCauseInfo" />
             <label>Time Zone</label>
             <input class="timezone" />
             <label>Business Hours</label>
             <input class="businessHours" />
+            <label>Best Contact Number</label>
+            <input class="bestContactNumber" />
+            <label>Alternate Contact Number</label>
+            <input class="alternateContactNumber" />
 
             <div class="btnRow">
               <button data-action="display">Display User Info</button>
@@ -57,36 +65,53 @@
           <section class="card">
             <h2>Issue / Concern</h2>
 
-            <label>Concern Type</label>
-            <select class="concernType">
-              <option value="">-- Select --</option>
-              <option value="ios_passkey">iOS Passkey</option>
-              <option value="android_passkey">Android Passkey </option>
-              <option value="windows_passkey">Windows Passkey </option>
-              <option value="iOS_new"> iOS new </option>
-              <option value="android_new"> Android new </option>
-              <option value="windows_deviceCompliance_update"> Windows device compliance(updates)</option>
-              <option value="bitlock"> Bitlock</option>
-              <option value="windows_deviceCompliance_sync"> Windows device compliance(sync)</option>
-              <option value="identity_pass"> Identity pass</option>
-              <option value="RAS_access"> RAS access</option>
-              <option value="SAW"> SAW</option>
-              <option value="windows_Activation"> Windows Activation</option>
-              <option value="AzureVPN_taskbar"> Azure VPN taskbar</option>
-              <option value="Deleted_device"> Windows Deleted Device</option>
-              <option value="valid_phones"> Valid phones</option>
+            <button class="secondary" data-action="toggle-free-text" id="toggleFreeText">Show Free Text</button>
 
-            </select>
+            <div class="freeTextDetails" style="display:none;">
+              <div class="btnRow">
+                <label>Describe the Issue (free text)</label>
+                <button class="secondary" data-action="copy-freetext">Copy</button>
+              </div>
+              <textarea class="issueText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Troubleshooting Steps:
 
-            <label>Describe the Issue (free text)</label>
-            <textarea class="issueText"></textarea>
 
-            <div class="btnRow">
-              <button data-action="steps">Show Steps</button>
-              <button class="secondary" data-action="copy-steps">Copy (Free text / Full output)</button>
+
+Remote Session Permission: Yes
+Sensitive/Confidential Statement Provided: Yes
+Remote Session Completed: Yes
+Issue Resolved: Yes
+User Confirmed Resolution: Yes
+Permission to Close Ticket: Yes"></textarea>
             </div>
 
-            <div class="splitOutputs">
+            <div class="concernDetails">
+              <label>Concern Type</label>
+              <select class="concernType">
+                <option value="">-- Select --</option>
+                <option value="ios_passkey">iOS Passkey</option>
+                <option value="android_passkey">Android Passkey </option>
+                <option value="windows_passkey">Windows Passkey </option>
+                <option value="iOS_new"> iOS new </option>
+                <option value="android_new"> Android new </option>
+                <option value="windows_deviceCompliance_update"> Windows device compliance(updates)</option>
+                <option value="bitlock"> Bitlock</option>
+                <option value="windows_deviceCompliance_sync"> Windows device compliance(sync)</option>
+                <option value="identity_pass"> Identity pass</option>
+                <option value="RAS_access"> RAS access</option>
+                <option value="SAW"> SAW</option>
+                <option value="windows_Activation"> Windows Activation</option>
+                <option value="AzureVPN_taskbar"> Azure VPN taskbar</option>
+                <option value="Deleted_device"> Windows Deleted Device</option>
+                <option value="valid_phones"> Valid phones</option>
+
+              </select>
+
+              <div class="btnRow">
+                <button data-action="steps">Show Steps</button>
+                <button class="secondary" data-action="copy-steps">Copy (Free text / Full output)</button>
+              </div>
+
+              <div class="splitOutputs">
               <div class="splitBlock">
                 <div class="btnRow">
                   <label class="miniLabel">Short Description</label>
@@ -118,6 +143,7 @@
                 </div>
                 <textarea class="outputBox kbOutput" readonly></textarea>
               </div>
+            </div>
             </div>
 
             
