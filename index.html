@@ -10,11 +10,20 @@
     <header class="topBar">
       <div>
         <h1>User Info & Issue / Concern Log</h1>
-        <div class="topActions">
+        <div class="topActions" style="margin-left:auto;">
           <button id="btnAddEntry">+ Add Entry</button>
+          <button id="btnUndoRemove" class="secondary" style="display:none;">Undo Remove</button>
           <button id="btnCollapseAll" class="secondary">Collapse All</button>
           <button id="btnExpandAll" class="secondary">Expand All</button>
         </div>
+
+    <label class="darkModeToggle fixed">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider">
+        <span class="icon sun" title="Light mode">☀️</span>
+        <span class="icon moon" title="Dark mode">🌙</span>
+      </span>
+    </label>
       </div>
     </header>
 
@@ -108,7 +117,7 @@ Permission to Close Ticket: Yes"></textarea>
 
               <div class="btnRow">
                 <button data-action="steps">Show Steps</button>
-                <button class="secondary" data-action="copy-steps">Copy (Free text / Full output)</button>
+                
               </div>
 
               <div class="splitOutputs">

@@ -1,6 +1,7 @@
 const entriesEl = document.getElementById('entries');
 const tpl = document.getElementById('entryTemplate');
 let entryCount = 0;
+let removedEntryData = null;
 
 /**
  * Helper: builds a standardized 4-part structure.
@@ -615,7 +616,21 @@ entriesEl.addEventListener('click', async (e) => {
     await copy(entry.querySelector('.issueText').value, btn);
   }
 
-  if (action === 'remove') entry.remove();
+  if (action === 'remove') {
+    // Store entry data for undo including all form values
+    const inputs = entry.querySelectorAll('input, textarea, select');
+    const formData = {};
+    inputs.forEach(input => {
+      formData[input.className] = input.value;
+    });
+    removedEntryData = {
+      html: entry.outerHTML,
+      formData: formData,
+      entryNumber: entry.querySelector('.entryNumber').textContent
+    };
+    entry.remove();
+    document.getElementById('btnUndoRemove').style.display = 'inline-block';
+  }
   if (action === 'toggle') entry.classList.toggle('collapsed');
 
   // Toggle free text visibility
@@ -641,9 +656,34 @@ entriesEl.addEventListener('click', async (e) => {
 });
 
 document.getElementById('btnAddEntry').onclick = addEntry;
+document.getElementById('btnUndoRemove').onclick = () => {
+  if (removedEntryData) {
+    const temp = document.createElement('div');
+    temp.innerHTML = removedEntryData.html;
+    const restoredEntry = temp.firstElementChild;
+    entriesEl.appendChild(restoredEntry);
+    // Restore form values
+    const inputs = restoredEntry.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+      if (removedEntryData.formData[input.className] !== undefined) {
+        input.value = removedEntryData.formData[input.className];
+      }
+    });
+    removedEntryData = null;
+    document.getElementById('btnUndoRemove').style.display = 'none';
+  }
+};
 document.getElementById('btnCollapseAll').onclick = () =>
   document.querySelectorAll('.entry').forEach((e) => e.classList.add('collapsed'));
 document.getElementById('btnExpandAll').onclick = () =>
   document.querySelectorAll('.entry').forEach((e) => e.classList.remove('collapsed'));
+
+// Dark mode toggle
+const darkToggle = document.getElementById('darkModeToggle');
+if (darkToggle) {
+  darkToggle.addEventListener('change', (e) => {
+    document.body.classList.toggle('dark-mode', e.target.checked);
+  });
+}
 
 addEntry();
