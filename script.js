@@ -20,7 +20,7 @@ function joinLines(lines) {
 function getIOSPasskeyParts() {
   return makeConcernParts({
     userCalling:
-      'User is calling because user needs help with setting up a passkey on iOS device, user does not a passkey currently, impacting capability of user to log in',
+      'User is calling because user needs help with setting up a passkey on iOS device, user does not a passkey currently, impacting capability of user to log in to microsoft resources',
     rootCause:
       'Root Cause: user was not able to follow the guide on the self-service portal to add passkey on IOS device, hence why user called GHD',
     troubleshooting: joinLines([
@@ -28,13 +28,17 @@ function getIOSPasskeyParts() {
       '',
       '>user called in because user needs help with setting-up passkey for IOS device',
       '>user has an iPhone (enter device)',
-      '>IOS version is (enter version)',
-      '>autofill set to authenticator',
+      '>the IOS version of the device is (enter version)',
+      '>went to phone settings > autofill, passwords & passkeys > made sure that authenticator is turned on ',
+      '>scrolled to the bottom of the same page, and advised user to set the "set up codes" to authenticator',
       '>made sure that bluetooth is turned on, on both devices',
-      '>went to aka.ms/mysignin',
-      '>add passkey',
-      '>scanned the QR code using camera of the phone',
-      '>passkey was added',
+      '>went to a browser from the laptop of the user',
+      '>guided user to go to aka.ms/mysignin',
+      '>went to security info, add a passkey, select iOS, and a QR code was generated',
+      '>advised user to scan the QR code using camera of the phone',
+      '>passkey was added to the phone successfully',
+      '>logged in to aka.ms/mysignin using the passkey on the phone to confirm that it works',
+      '>was able to log in successfully',
       '>resolved',
       '',
       'Remote Session Permission: Yes',
@@ -52,20 +56,25 @@ function getIOSPasskeyParts() {
 function getAndroidPasskeyParts() {
   return makeConcernParts({
     userCalling:
-      'User is calling in because device wants to enroll a passkey on android device, affecting capability of user to access resources on phone',
+      'User is calling in because device wants to enroll a passkey on android device, affecting capability of user to login to microsoft resources using the phone',
     rootCause:
       'Root cause: user was not able to find any links to follow on how to add a passkey on an android phone, hence why user called GHD',
     troubleshooting: joinLines([
       'Troubleshooting Steps:',
       '',
-      '>user called because user needs help with setting up a passkey on android device ',
-      '>autofill set to authenticator on phone settings',
-      '>went to aka.ms/mysignin',
-      '>add passkey',
-      '>scan qr code using authenticator',
-      '>was able to add passkey',
+      '>user called GHD because user needs help with setting up a passkey on android device ',
+      '>the model of the device that the user has is a (enter device)',
+      '>the android version of the device is running Android (enter version)',
+      '>went to the settings of the phone, searched for preferences, clicked on passkeys, preferred service for autofill was set to authenticator',
+      '>guided user to go to aka.ms/mysignin on a browser on a laptop',
+      '>clicked add a passkey, selected android, and a QR code was generated',
+      '>advised user to scan the QR code using the authenticator app',
+      '>was able to add passkey on phone successfully',
+      '>tried logging in to aka.ms/mysignin using the passkey on the phone to confirm that it works',
+      '>was able to log in successfully',
       '>resolved',
       '',
+      
       'Remote Session Permission: yes',
       'Sensitive/Confidential Statement Provided: yes',
       'Remote Session Completed: yes',
