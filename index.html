@@ -82,6 +82,12 @@
                 <select class="tabSelect" style="width:auto;margin-left:10px;">
                   <option value="troubleshooting">Troubleshooting Steps</option>
                   <option value="escalation">Escalation</option>
+                  <option value="taskRequest">Task Request</option>
+                  <option value="bitlocker">Bitlocker</option>
+                  <option value="hardwareEscalation">Hardware Escalation</option>
+                  <option value="teamsEscalation">Teams Escalation</option>
+                  <option value="outlookEscalation">Outlook and Mailbox Escalation</option>
+                  <option value="swatApproval">SWAT Approval</option>
                 </select>
               </div>
 
@@ -108,6 +114,48 @@ Permission to Close Ticket: Yes</textarea>
               </div>
               <textarea class="escalationText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Issue (I) - &#10;Error Message (E) - &#10;Cause (C) - &#10;Troubleshooting Steps:&#10;&#10;&#10;Bug Number (BN) - &#10;System Info (SI) -"></textarea>
             </div>
+
+            <div class="taskRequestContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-taskRequest">Copy</button>
+              </div>
+              <textarea class="taskRequestText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Ticket number:  &#10;Device Model:  &#10;Asset number:  &#10;Serial Number:  &#10;Phone number:  &#10;User location:  &#10;Org location:  &#10;Time Zone:  &#10;availability going onsite:  "></textarea>
+            </div>
+
+            <div class="bitlockerContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-bitlocker">Copy</button>
+              </div>
+              <textarea class="bitlockerText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Caller&#39;s Alias :  &#10;Complete Recovery Key ID:  &#10;User&#39;s Domain -  &#10;Computer&#39;s Domain:   &#10;Full Computer Name:  &#10;Authenticated - YES  &#10;Why Did Self Service Fail? Aka.ms/CPWEB:  &#10;Ticket# "></textarea>
+            </div>
+
+            <div class="hardwareEscalationContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-hardwareEscalation">Copy</button>
+              </div>
+              <textarea class="hardwareEscalationText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Issue (I) -  &#10;Error Message (E) -NA  &#10;Cause (C)- NA  &#10;Troubleshooting (TS)-  &#10; &#10;Bug Number (BN)- NA  &#10;System Info (SI)- Attached  &#10; &#10;1. What happened when the issue first occurred? Did the computer freeze, shut down, or display an error message? : n/a  &#10;2. Are there any physical damages to the computer, spills, overheating, or any other issues? : na  &#10;3. Are there any unusual sounds or smells coming from the computer? : n/a  &#10;4. Does the issue happen consistently, or is it intermittent? : n/a  &#10;5. Have you tried restarting the computer? Did the issue go away temporarily or persist? : n/a  &#10; &#10;Steps followed with the user during troubleshooting:  &#10; &#10;Disconnect all peripherals from the computer (keyboard, mouse, external monitor, USB devices, printer, docking station, power supply, etc.)  &#10;Connect the power supply, and confirm that is correctly plugged in and it is connected on a working power outlet  &#10;Restart the computer only with the power supply connected  &#10;Computer is powered on does not boot into Windows  &#10;Computer does not turn on at all  &#10;Document ticket with these troubleshooting steps (check and use the button below to generate steps followed)  &#10;Get SME's approval for escalation to CIM Hardware on the ticket  &#10;Escalate ticket to CIM Hardware  &#10; &#10;Model:  &#10;Asset number :  &#10;Serial Number :  &#10;Phone number:   &#10;User location :  &#10;Organization location:   "></textarea>
+            </div>
+
+            <div class="teamsEscalationContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-teamsEscalation">Copy</button>
+              </div>
+              <textarea class="teamsEscalationText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Issue reported  &#10; &#10;Error message and Valid Screenshots  &#10; &#10;Platform where the issue is reported  &#10; &#10;Nature of issue [ Connectivity , calls , Audio or any other issue ]  &#10;"></textarea>
+            </div>
+
+            <div class="outlookEscalationContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-outlookEscalation">Copy</button>
+              </div>
+              <textarea class="outlookEscalationText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Email Address of the affected Mailbox  &#10; &#10;Issue reported [ Outlook Classic app or Outlook new app ]  &#10; &#10;Platform where the issue is reported [ Windows / MAC / iOS / Android ]  &#10; &#10;Error message and valid Screenshots  &#10;"></textarea>
+            </div>
+
+            <div class="swatApprovalContent" style="display:none;">
+              <div class="btnRow">
+                <button class="secondary" data-action="copy-swatApproval">Copy</button>
+              </div>
+              <textarea class="swatApprovalText" style="width:100%;min-height:300px;resize:vertical;" placeholder="Issue Summary:  &#10; &#10;Location:   &#10; &#10;User Details:  &#10; &#10;Troubleshooting Done:  &#10; &#10;Device Details:  &#10;"></textarea>
+            </div>
             </div>
 
             <div class="concernDetails">
@@ -128,7 +176,7 @@ Permission to Close Ticket: Yes</textarea>
                 <option value="windows_Activation"> Windows Activation</option>
                 <option value="AzureVPN_taskbar"> Azure VPN taskbar</option>
                 <option value="Deleted_device"> Windows Deleted Device</option>
-                <option value="valid_phones"> Valid phones</option>
+                <option value="valid_phones"> </option>
 
               </select>
 

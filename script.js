@@ -674,6 +674,42 @@ entriesEl.addEventListener('click', async (e) => {
     const textarea = entry.querySelector('.escalationText');
     await copy(textarea.value, btn);
   }
+
+  // Copy Task Request
+  if (action === 'copy-taskRequest') {
+    const textarea = entry.querySelector('.taskRequestText');
+    await copy(textarea.value, btn);
+  }
+
+  // Copy Bitlocker
+  if (action === 'copy-bitlocker') {
+    const textarea = entry.querySelector('.bitlockerText');
+    await copy(textarea.value, btn);
+  }
+
+  // Copy Hardware Escalation
+  if (action === 'copy-hardwareEscalation') {
+    const textarea = entry.querySelector('.hardwareEscalationText');
+    await copy(textarea.value, btn);
+  }
+
+  // Copy Teams Escalation
+  if (action === 'copy-teamsEscalation') {
+    const textarea = entry.querySelector('.teamsEscalationText');
+    await copy(textarea.value, btn);
+  }
+
+  // Copy Outlook and Mailbox Escalation
+  if (action === 'copy-outlookEscalation') {
+    const textarea = entry.querySelector('.outlookEscalationText');
+    await copy(textarea.value, btn);
+  }
+
+  // Copy SWAT Approval
+  if (action === 'copy-swatApproval') {
+    const textarea = entry.querySelector('.swatApprovalText');
+    await copy(textarea.value, btn);
+  }
 });
 
 // Handle tab selection dropdown change
@@ -682,16 +718,118 @@ entriesEl.addEventListener('change', async (e) => {
     const entry = e.target.closest('.entry');
     const troubleshootingContent = entry.querySelector('.troubleshootingContent');
     const escalationContent = entry.querySelector('.escalationContent');
+    const taskRequestContent = entry.querySelector('.taskRequestContent');
+    const bitlockerContent = entry.querySelector('.bitlockerContent');
+    const hardwareEscalationContent = entry.querySelector('.hardwareEscalationContent');
+    const teamsEscalationContent = entry.querySelector('.teamsEscalationContent');
+    const outlookEscalationContent = entry.querySelector('.outlookEscalationContent');
+    const swatApprovalContent = entry.querySelector('.swatApprovalContent');
     const escalationTextarea = entry.querySelector('.escalationText');
+    const taskRequestTextarea = entry.querySelector('.taskRequestText');
+    const bitlockerTextarea = entry.querySelector('.bitlockerText');
+    const hardwareEscalationTextarea = entry.querySelector('.hardwareEscalationText');
+    const teamsEscalationTextarea = entry.querySelector('.teamsEscalationText');
+    const outlookEscalationTextarea = entry.querySelector('.outlookEscalationText');
+    const swatApprovalTextarea = entry.querySelector('.swatApprovalText');
     if (e.target.value === 'troubleshooting') {
       troubleshootingContent.style.display = 'block';
       escalationContent.style.display = 'none';
-    } else {
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'none';
+    } else if (e.target.value === 'escalation') {
       troubleshootingContent.style.display = 'none';
       escalationContent.style.display = 'block';
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'none';
       // Pre-fill escalation template if empty
       if (!escalationTextarea.value.trim()) {
         escalationTextarea.value = 'Issue (I) - \nError Message (E) - \nCause (C) - \nTroubleshooting Steps:\n\n\nBug Number (BN) -\nSystem Info (SI) -';
+      }
+    } else if (e.target.value === 'taskRequest') {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'none';
+      taskRequestContent.style.display = 'block';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'none';
+      // Pre-fill task request template if empty
+      if (!taskRequestTextarea.value.trim()) {
+        taskRequestTextarea.value = 'Ticket number:  \nDevice Model:  \nAsset number:  \nSerial Number:  \nPhone number:  \nUser location:  \nOrg location:  \nTime Zone:  \navailability going onsite:  ';
+      }
+    } else if (e.target.value === 'bitlocker') {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'none';
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'block';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'none';
+      // Pre-fill bitlocker template if empty
+      if (!bitlockerTextarea.value.trim()) {
+        bitlockerTextarea.value = "Caller\'s Alias :  \nComplete Recovery Key ID:  \nUser\'s Domain -  \nComputer\'s Domain:   \nFull Computer Name:  \nAuthenticated - YES  \nWhy Did Self Service Fail? Aka.ms/CPWEB:  \nTicket# ";
+      }
+    } else if (e.target.value === 'hardwareEscalation') {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'none';
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'block';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'none';
+      // Pre-fill hardware escalation template if empty
+      if (!hardwareEscalationTextarea.value.trim()) {
+        hardwareEscalationTextarea.value = 'Issue (I) -  \nError Message (E) -NA  \nCause (C)- NA  \nTroubleshooting (TS)-  \n \nBug Number (BN)- NA  \nSystem Info (SI)- Attached  \n \n1. What happened when the issue first occurred? Did the computer freeze, shut down, or display an error message? : n/a  \n2. Are there any physical damages to the computer, spills, overheating, or any other issues? : na  \n3. Are there any unusual sounds or smells coming from the computer? : n/a  \n4. Does the issue happen consistently, or is it intermittent? : n/a  \n5. Have you tried restarting the computer? Did the issue go away temporarily or persist? : n/a  \n \nSteps followed with the user during troubleshooting:  \n \nDisconnect all peripherals from the computer (keyboard, mouse, external monitor, USB devices, printer, docking station, power supply, etc.)  \nConnect the power supply, and confirm that is correctly plugged in and it is connected on a working power outlet  \nRestart the computer only with the power supply connected  \nComputer is powered on does not boot into Windows  \nComputer does not turn on at all  \nDocument ticket with these troubleshooting steps (check and use the button below to generate steps followed)  \nGet SME\'s approval for escalation to CIM Hardware on the ticket  \nEscalate ticket to CIM Hardware  \n \nModel:  \nAsset number :  \nSerial Number :  \nPhone number:   \nUser location :  \nOrganization location:   ';
+      }
+    } else if (e.target.value === 'teamsEscalation') {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'none';
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'block';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'none';
+      // Pre-fill teams escalation template if empty
+      if (!teamsEscalationTextarea.value.trim()) {
+        teamsEscalationTextarea.value = 'Issue reported  \n \nError message and Valid Screenshots  \n \nPlatform where the issue is reported  \n \nNature of issue [ Connectivity , calls , Audio or any other issue ]  \n';
+      }
+    } else if (e.target.value === 'outlookEscalation') {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'none';
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'block';
+      swatApprovalContent.style.display = 'none';
+      // Pre-fill outlook escalation template if empty
+      if (!outlookEscalationTextarea.value.trim()) {
+        outlookEscalationTextarea.value = 'Email Address of the affected Mailbox  \n \nIssue reported [ Outlook Classic app or Outlook new app ]  \n \nPlatform where the issue is reported [ Windows / MAC / iOS / Android ]  \n \nError message and valid Screenshots  \n';
+      }
+    } else if (e.target.value === 'swatApproval') {
+      troubleshootingContent.style.display = 'none';
+      escalationContent.style.display = 'none';
+      taskRequestContent.style.display = 'none';
+      bitlockerContent.style.display = 'none';
+      hardwareEscalationContent.style.display = 'none';
+      teamsEscalationContent.style.display = 'none';
+      outlookEscalationContent.style.display = 'none';
+      swatApprovalContent.style.display = 'block';
+      // Pre-fill SWAT approval template if empty
+      if (!swatApprovalTextarea.value.trim()) {
+        swatApprovalTextarea.value = 'Issue Summary:  \n \nLocation:   \n \nUser Details:  \n \nTroubleshooting Done:  \n \nDevice Details:  \n';
       }
     }
   }
